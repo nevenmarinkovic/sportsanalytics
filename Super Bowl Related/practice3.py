@@ -50,3 +50,4 @@ agg = pass_data.groupby(
     ["player_name", "team_abbr", "team_color", "week"], as_index = False).agg({"passing_yards": "sum", "pass_touchdown": "sum"})
 print(agg.head())
 
+
