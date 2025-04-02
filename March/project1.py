@@ -26,8 +26,10 @@ stats2 = data[data['School'] == team2].iloc[0]
 O1, D1, tempo1, e1, diff1, ft1 = stats1[['ORtg_Avg','DRtg_Avg','Tempo_Avg','Experience_Norm','Difficulty_Norm', 'FT_Norm']]
 O2, D2, tempo2, e2, diff2, ft2 = stats2[['ORtg_Avg','DRtg_Avg','Tempo_Avg','Experience_Norm','Difficulty_Norm', 'FT_Norm']]
 
-#Calculate the game tempo using the harmonic mean formula
-gameTempo = (2 * tempo1 * tempo2)/(tempo1 + tempo2)
+
+#Calculate the game tempo 
+gameTempo = (tempo1 + tempo2)/2
+
 
 '''
 print('Tempo for ', team1, ':', tempo1)
@@ -40,8 +42,8 @@ adjO1 = O1*(D2/104.7)
 adjO2 = O2*(D1/104.7)
 
 #Adjust the offensive efficiency for each team by factoring in experience, difficulty, and free throw percentage
-adjusted1 = (2 * diff1) + (3 * ft1) + (2 * e1)
-adjusted2 = (2 * diff2) + (3 * ft2) + (2 * e2)
+adjusted1 = (3 * diff1) + (2 * ft1) + (1.5 * e1)
+adjusted2 = (3 * diff2) + (2 * ft2) + (1.5 * e2)
 
 final_OE1 = adjO1 + adjusted1
 final_OE2 = adjO2 + adjusted2
